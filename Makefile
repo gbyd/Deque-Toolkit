@@ -13,7 +13,7 @@ $(TARGET): main.o deque.o
 	$(CC) -g main.o deque.o -o $(TARGET)
 
 main.o: main.cpp deque.h
-	$(CC) $(CFLAGS) deque.cpp
+	$(CC) $(CFLAGS) main.cpp
 
 deque.o: deque.cpp deque.h
 	$(CC) $(CFLAGS) deque.cpp
