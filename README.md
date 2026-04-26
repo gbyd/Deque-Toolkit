@@ -28,13 +28,14 @@ Design Decisions:
 - I made sure to include the 'const' keyword on the getter functions so they don't accidentally change any data.A README.md describing your implementation (try to mimic the STL documentation) and describe what seems to work correctly, and any bugs that you encountered that you could not fix in time.  Make sure to include a section on how you divided work for this assignment!
 
 --- deque.cpp ---
--
--
--
+- Intialized the first element in the middle of the blockmap so the deque has room to grow in both directions before needing a full resize.
+- A new block (row) is only created with new T[] when an elkemnt actually needs to be placed there to save memory.
+- For resizeBlockmap(), the map size doubles and an offset is used to re center the existin pointers to help prevent the map from hitting a boundary immediately after a resize.
 
 --- main.cpp ---
--
--
+- Used the random std::rand() to simulate 5,000 mixed operations in a random order. 
+- Used check() that tracks passed and failed tests instead of just printing the values. Makes the output cleaner and that the final count is clear.
+- Pushed 10,000 elements to both the front and back to trigger resizeBlockmap() multiple times. Doing so confirmed that the 2D memory expansion logic doesn't lose data even with repeatiting resizes.
 
 Complexity and Performance:
 - Accessing any item with the [] operator happens in constant time.
@@ -43,4 +44,3 @@ Complexity and Performance:
 
 Challenges:
 - Memory management is always something you have to be careful with to avoid leaks; especially with 2D arrays since you have to keep up with two different dimensions of pointers.
-- 
